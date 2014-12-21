@@ -9,8 +9,8 @@
     <name>Reactor Project for highfaces</name>
 
     <modules>
-       
-    </modules>
+    <module>showcase</module>
+  </modules>
 
     <build>
         <pluginManagement>
