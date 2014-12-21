@@ -9,9 +9,49 @@
     <name>Reactor Project for highfaces</name>
 
     <modules>
-    <module>showcase</module>
-  </modules>
-
+        <module>highfaces</module>
+        <module>showcase</module>
+    </modules>
+    <url>http://www.highfaces.org</url>
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+            <comments>A business-friendly OSS license</comments>
+        </license>
+    </licenses>
+    
+    <scm>
+        <connection>
+            scm:svn:http://highfaces.googlecode.com/svn/highfaces/trunk
+        </connection>
+        <developerConnection>
+            scm:svn:https://highfaces.googlecode.com/svn/highfaces/trunk
+        </developerConnection>
+        <url>
+            http://highfaces.googlecode.com/svn/highfaces/trunk
+        </url>
+    </scm>
+    
+    <developers>
+        <developer>
+            <id>markus.bauer</id>
+            <name>Markus Bauer</name>
+        </developer>
+    </developers>
+    <contributors>
+        <contributor>
+            <email>info@bauer-live.de</email>
+            <name>Markus Bauer-Hermann</name>
+            <organization>Bauer-Live Softwaredevelopment</organization>
+            <roles>
+                <role>Developer</role>
+            </roles>
+            <url>http://www.bauer-live.de</url>
+        </contributor>
+    </contributors>
+    
     <build>
         <pluginManagement>
             <plugins>
@@ -44,33 +84,6 @@
             </plugin>
         </plugins>
     </build>
-    <developers>
-        <developer>
-            <email>info@bauer-live.de</email>
-            <id>markus</id>
-            <name>Markus Bauer-Hermann</name>
-            <organizationUrl>http://www.bauer-live.de</organizationUrl>
-            <roles>
-                <role>
-                    Main Developer
-                </role>
-            </roles>
-            <url>http://mbauer77.wordpress.com</url>
-            <organization>Bauer-Live Softwaredevelopment</organization>
-
-        </developer>
-    </developers>
-    <contributors>
-        <contributor>
-            <email>info@bauer-live.de</email>
-            <name>Markus Bauer-Hermann</name>
-            <organization>Bauer-Live Softwaredevelopment</organization>
-            <roles>
-                <role>Developer</role>
-            </roles>
-            <url>http://www.bauer-live.de</url>
-        </contributor>
-    </contributors>
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -79,8 +92,7 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-    <url>http://www.blngshop.com/</url>
-
+   
     <organization>
         <name>Bauer-Live Softwaredevelopment</name>
         <url>http://www.bauer-live.de</url>
