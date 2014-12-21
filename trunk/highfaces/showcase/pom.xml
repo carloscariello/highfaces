@@ -2,10 +2,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-    <artifactId>highfaces-reactor</artifactId>
-    <groupId>org.highfaces</groupId>
-    <version>1.0</version>
-  </parent>
+        <artifactId>highfaces-reactor</artifactId>
+        <groupId>org.highfaces</groupId>
+        <version>1.0</version>
+    </parent>
 
     <groupId>org.highfaces</groupId>
     <artifactId>showcase</artifactId>
@@ -13,7 +13,34 @@
     <packaging>war</packaging>
 
     <name>showcase</name>
-
+    <url>http://www.highfaces.org</url>
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+            <comments>A business-friendly OSS license</comments>
+        </license>
+    </licenses>
+    <scm>
+        <connection>
+            scm:svn:http://highfaces.googlecode.com/svn/highfaces/trunk
+        </connection>
+        <developerConnection>
+            scm:svn:https://highfaces.googlecode.com/svn/highfaces/trunk
+        </developerConnection>
+        <url>
+            http://highfaces.googlecode.com/svn/highfaces/trunk
+        </url>
+    </scm>
+    
+    <developers>
+        <developer>
+            <id>markus.bauer</id>
+            <name>Markus Bauer</name>
+        </developer>
+    </developers>
+    
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
