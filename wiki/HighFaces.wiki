@@ -1,0 +1,10 @@
+#summary HighFaces overview page
+
+= Introduction =
+
+HighFaces is a JSF 2 component library wrapping the famous JS library highcharts and providing easiest possible and stable access to its API from JSF.
+
+
+= Details =
+
+To see HighFaces in Action, visit the showcase application at http://www.highfaces.org
