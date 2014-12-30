@@ -7,5 +7,7 @@
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
               xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
     <name>highfaces</name>
-   
+    <application>
+        <resource-handler>org.highfaces.util.HighFacesResourceHandler</resource-handler>
+    </application>
 </faces-config>

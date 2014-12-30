@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright 2014 Bauer-Live Softwaredevelopment.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+             
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:hc="http://highfaces.org"
+
+                template="/WEB-INF/master.xhtml"
+                >
+    <ui:define name="headline">Column chart - List with Numbers</ui:define>
+    <ui:define name="description">As easy as it could be: Just provide a List of any Number type as value, the name for the iteration variable and the point value and immediately you have your chart. Of course, you can still customize it with the various possible facets or attributes.</ui:define>
+    
+    <ui:define name="icontent">
+        
+        <h:panelGroup layout="block">
+            <hc:chart type="column" value="#{lineChartBean.simpleList}" var="point" point="#{point}" title="List of Integer values">
+                
+            </hc:chart>
+            
+        </h:panelGroup>
+    </ui:define>
+    <ui:define name="xhtml">
+        <script type="syntaxhighlighter" class="brush: xml"><![CDATA[
+            
+               <hc:chart type="column" value="# {lineChartBean.simpleList}" var="point" 
+                    point="# {point}" title="List of Integer values"/>
+
+            ]]></script>
+    </ui:define>
+</ui:composition>

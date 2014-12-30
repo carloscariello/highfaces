@@ -4,4 +4,120 @@
                 xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facelettaglibrary_2_0.xsd"
                 version="2.0">
     <namespace>http://highfaces.org</namespace>
+    <tag>
+        <tag-name>chart</tag-name>
+        <component>
+            <component-type>org.highfaces.component.Chart</component-type>
+            <renderer-type>org.highfaces.component.ChartRenderer</renderer-type>
+        </component>
+        <attribute>
+            <description><![CDATA[Type of the charts, possible values are line, area, column and bar]]></description>
+            <name>type</name>
+            <required>true</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[Datasource of the component, can be a Collection or Map type. Provide either a value, a model or chartseries as children declared in the xhtml file.]]></description>
+            <name>value</name>
+            <required>false</required>
+            <type>java.lang.Object</type>
+        </attribute>
+         <attribute>
+            <description><![CDATA[Datasource of the component, must implement the ChartModel interface. Provide either a value, a model or chartseries as children declared in the xhtml file.]]></description>
+            <name>model</name>
+            <required>false</required>
+            <type>java.lang.Object</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[Height of chart in px]]></description>
+            <name>height</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[Width of chart in px]]></description>
+            <name>width</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[Title for the chart]]></description>
+            <name>title</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[Sub Title for the chart]]></description>
+            <name>subTitle</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[Label for x-axis]]></description>
+            <name>xaxisLabel</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+         <attribute>
+            <description><![CDATA[Label for y-axis]]></description>
+            <name>yaxisLabel</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[Name of the request scoped variable used as iterator for value]]></description>
+            <name>var</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[Index of currently rendered item during iteration over the Collection in value-Attribute]]></description>
+            <name>rowIndexVar</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[ValueExpression of the value of a point, bar,... Only valid if used in combinatino with value.]]></description>
+            <name>point</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[ValueExpression of the tickLabel for a single point. Only valid if used in combinatino with value.]]></description>
+            <name>tickLabel</name>
+            <required>false</required>
+            <type>java.lang.Object</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[ID of rerender component for ajax actions]]></description>
+            <name>render</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+         <attribute>
+            <description><![CDATA[JavaScript function name for client side customization. All highcharts configuration options are available inside the function using 'this'.]]></description>
+            <name>extender</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+    </tag>
+    <tag>
+        <tag-name>chartSerie</tag-name>
+        <component>
+            <component-type>org.highfaces.component.ChartSerie</component-type>
+            <!--<renderer-type>org.highfaces.component.ChartRenderer</renderer-type>-->
+        </component>
+        <attribute>
+            <description><![CDATA[Type of the charts, possible values are line, area, column and bar]]></description>
+            <name>name</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[Datasource of the component, can be a Collection or Map type. Provide either a value, a model or chartseries as children declared in the xhtml file.]]></description>
+            <name>value</name>
+            <required>false</required>
+            <type>java.lang.Object</type>
+        </attribute>
+    </tag>
 </facelet-taglib>
