@@ -37,7 +37,13 @@
             <id>markus.bauer</id>
             <name>Markus Bauer</name>
         </developer>
+
     </developers>
+     <organization>
+        <name>Bauer-Live Softwaredevelopment</name>
+        <url>http://www.bauer-live.de</url>
+    </organization>
+   
     <dependencies>
         <dependency>
             <groupId>org.glassfish</groupId>
@@ -108,7 +114,12 @@
             <version>1</version>
             <scope>provided</scope>
         </dependency>
-        
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20090211</version>
+            <type>jar</type>
+        </dependency>
     </dependencies>
     
     <build>
