@@ -25,21 +25,21 @@ limitations under the License.
 
                 template="/WEB-INF/master.xhtml"
                 >
-    <ui:define name="headline">Line chart - Map with POJO List</ui:define>
-    <ui:define name="description">Having multiple series within one chart can be achieved by providing a map as value. The key will be used as the series' name, the value has to be a List of Numbers or POJOs. Customization with the various possible facets or attributes can still be combined.</ui:define>
+    <ui:define name="headline">Column chart - Stacked Map of POJOs</ui:define>
+    <ui:define name="description">With the attribute "stacking" you can put series on top of each other. If you set stacking to "percent", each stack will be aligned to 100%, if set to "normal" the values will be summed up.</ui:define>
     
     <ui:define name="icontent">
         
         <h:panelGroup layout="block">
            
-            <hf:chart type="line" value="#{lineChartBean.mappedList}" var="birth" point="#{birth.amount}" tickLabel="#{birth.year}" title="Map with Lists of Pojos" subTitle="Including sub title"/>
+            <hf:chart type="column" value="#{lineChartBean.mappedList}" var="birth" stacking="normal" point="#{birth.amount}" tickLabel="#{birth.year}" title="Stacked Map of Lists"/>
         </h:panelGroup>
     </ui:define>
     <ui:define name="xhtml">
         <script type="syntaxhighlighter" class="brush: xml"><![CDATA[
             
-               <hf:chart type="line" value="# {lineChartBean.mappedList}" var="birth" subTitle="Including sub title"
-                    point="# {birth.amount}" tickLabel="# {birth.year}" title="Map with Lists of Pojos"/>
+               <hf:chart type="column" value="# {lineChartBean.boys}" var="birth" stacking="normal"
+                    point="# {birth.amount}" tickLabel="# {birth.year}" title="List of Pojos"/>
 
             ]]></script>
     </ui:define>

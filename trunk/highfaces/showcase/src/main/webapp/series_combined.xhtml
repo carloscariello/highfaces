@@ -19,27 +19,31 @@ limitations under the License.
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:f="http://java.sun.com/jsf/core"
-             
+
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:hf="http://highfaces.org"
 
                 template="/WEB-INF/master.xhtml"
                 >
-    <ui:define name="headline">Line chart - Map with POJO List</ui:define>
-    <ui:define name="description">Having multiple series within one chart can be achieved by providing a map as value. The key will be used as the series' name, the value has to be a List of Numbers or POJOs. Customization with the various possible facets or attributes can still be combined.</ui:define>
-    
+    <ui:define name="headline">ChartSerie - declare Series in xhtml</ui:define>
+    <ui:define name="description">With ChartSeries as children you can add any Java Object List to your Charts and define which attribute shall be used as point values. The Objects inside the lists can even be of different types.</ui:define>
     <ui:define name="icontent">
-        
+
         <h:panelGroup layout="block">
-           
-            <hf:chart type="line" value="#{lineChartBean.mappedList}" var="birth" point="#{birth.amount}" tickLabel="#{birth.year}" title="Map with Lists of Pojos" subTitle="Including sub title"/>
+            <hf:chart type="line" title="Combining different chart types with ChartSeries" xaxisLabel="Year" yaxisLabel="Amount">
+                <hf:chartSerie name="Boys" value="#{lineChartBean.boys}" var="point" point="#{point.amount}" tickLabel="#{point.year}" />
+                <hf:chartSerie colorByPoint="true" type="column" name="Girls" value="#{lineChartBean.girls}" var="point" point="#{point.amount}"  />
+            </hf:chart>
+
         </h:panelGroup>
     </ui:define>
     <ui:define name="xhtml">
         <script type="syntaxhighlighter" class="brush: xml"><![CDATA[
             
-               <hf:chart type="line" value="# {lineChartBean.mappedList}" var="birth" subTitle="Including sub title"
-                    point="# {birth.amount}" tickLabel="# {birth.year}" title="Map with Lists of Pojos"/>
+               <hf:chart type="line" title="Series with individual lists" xaxisLabel="Year" yaxisLabel="Amount">
+                   <hf:chartSerie name="Boys" value="# {lineChartBean.boys}" var="point" point="# {point.amount}"  tickLabel="# {point.year}"/>
+                   <hf:chartSerie colorByPoint="true" type="column" name="Girls" value="# {lineChartBean.girls}" var="point" point="# {point.amount}"  />
+               </hf:chart>
 
             ]]></script>
     </ui:define>
@@ -49,11 +53,16 @@ limitations under the License.
 @RequestScoped
 public class LineChartBean {
 
-    protected Map<String, List<Births>> mappedList;
+    protected List<Birth> boys;
+    protected List<Birth> girls;
     
-    public Map<String, List<Births>> getMappedList() {
-        return mappedList;
-    }          
+    public List<Births> getBoys() {
+        return boys;
+    }           
+    
+    public List<Births> getGirls() {
+        return girls;
+    }   
     
     public LineChartBean() {
         reload();
@@ -62,14 +71,11 @@ public class LineChartBean {
     private void reload() {
         boys = new ArrayList<>();
         girls = new ArrayList<>();
-        mappedList = new HashMap<>();
         Random r = new Random();
         for (int i = 2000; i < 2010; i++) {
-            boys.add(new Births(Integer.toString(i), r.nextInt(500) + 800));
-            girls.add(new Births(Integer.toString(i), r.nextInt(500) + 800));
-        }
-        mappedList.put("boys", boys);
-        mappedList.put("girls", girls);
+            boys.add(new Births(Integer.toString(i), r.nextInt(500) + 800));   
+            girls.add(new Births(Integer.toString(i), r.nextInt(500) + 800));   
+        }  
     }
 }
         ]]></script>

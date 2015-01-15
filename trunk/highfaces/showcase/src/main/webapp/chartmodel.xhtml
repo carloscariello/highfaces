@@ -19,28 +19,25 @@ limitations under the License.
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:f="http://java.sun.com/jsf/core"
-
+             
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:hf="http://highfaces.org"
 
                 template="/WEB-INF/master.xhtml"
                 >
-    <ui:define name="headline">Line chart - List with Numbers</ui:define>
-    <ui:define name="description">As easy as it could be: Just provide a List of any Number type as value, the name for the iteration variable and the point value and immediately you have your chart. Of course, you can still customize it with the various possible facets or attributes.</ui:define>
+    <ui:define name="headline">ChartModel API - Define your series in code</ui:define>
+    <ui:define name="description">If you prefer defining your series in code rather than declaring them in xhtml, you can use the ChartModel API with either the default implementations or even implement the interfaces on your own classes.</ui:define>
+    
     <ui:define name="icontent">
-
+        
         <h:panelGroup layout="block">
-            <hf:chart type="line" value="#{lineChartBean.simpleList}" var="point" point="#{point}" title="List of Integer values" xaxisLabel="Index" yaxisLabel="Amount">
-
-            </hf:chart>
-
+            <hf:chart type="column" model="#{chartModelBean.model}"  title="Defined series via ChartModel API"/>            
         </h:panelGroup>
     </ui:define>
     <ui:define name="xhtml">
         <script type="syntaxhighlighter" class="brush: xml"><![CDATA[
             
-               <hf:chart type="line" value="# {lineChartBean.simpleList}" var="point" 
-                    point="# {point}" title="List of Integer values" xaxisLabel="Index" yaxisLabel="Amount"/>
+               <hf:chart type="column" model="# {chartModelBean.model}"  title="Defined series via ChartModel API"/> 
 
             ]]></script>
     </ui:define>
@@ -48,26 +45,34 @@ limitations under the License.
         <script type="syntaxhighlighter" class="brush: java"><![CDATA[
 @ManagedBean
 @RequestScoped
-public class LineChartBean {
+public class ChartModelBean {
 
-    protected List<Integer> simpleList;
-    
-    public List<Integer> getSimpleList() {
-        return simpleList;
-    }            
-    
-    public LineChartBean() {
+    protected DefaultChartModel model;
+
+    public ChartModelBean() {
         reload();
     }
 
-    private void reload() {
-        simpleList = new ArrayList<>();
+    public void reload() {
+        model = new DefaultChartModel();
+        DefaultChartSeries boysSeries = new DefaultChartSeries();
+        DefaultChartSeries girlsSeries = new DefaultChartSeries();
+        boysSeries.setName("Boys");
+        girlsSeries.setName("Girls");
         
         Random r = new Random();
         for (int i = 2000; i < 2010; i++) {
-            simpleList.add(r.nextInt(500) + 800);    
-        }  
+            boysSeries.addPoint(Integer.toString(i), r.nextInt(500) + 800);
+            girlsSeries.addPoint(Integer.toString(i), r.nextInt(500) + 800);
+        }
+        model.getSeries().add(boysSeries);
+        model.getSeries().add(girlsSeries);
     }
+
+    public ChartModel getModel() {
+        return model;
+    }
+
 }
         ]]></script>
     </ui:define>

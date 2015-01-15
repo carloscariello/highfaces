@@ -1,5 +1,5 @@
 /*
- * Copyright 2014 Bauer-Live Softwaredevelopment.
+ * Copyright 2015 Bauer-Live Softwaredevelopment.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,23 +15,14 @@
  */
 package org.highfaces.showcase;
 
-import java.io.Serializable;
-import java.util.Date;
-
 /**
  *
  * @author Markus
  */
-public class Births implements Serializable {
+public class AvgTemperature {
 
-    private static final long serialVersionUID = -6693851535463524178L;
     protected String year;
-    protected Integer amount;
-    protected Date date;
-
-    public Date getDate() {
-        return date;
-    }
+    protected Double temperature;
 
     public String getYear() {
         return year;
@@ -41,30 +32,20 @@ public class Births implements Serializable {
         this.year = year;
     }
 
-    public Integer getAmount() {
-        return amount;
+    public Double getTemperature() {
+        return temperature;
     }
 
-    public void setAmount(Integer amount) {
-        this.amount = amount;
+    public void setTemperature(Double temperature) {
+        this.temperature = temperature;
     }
 
-    public Births() {
+    public AvgTemperature() {
     }
 
-    public Births(String year, Integer amount) {
+    public AvgTemperature(String year, Double temperature) {
         this.year = year;
-        this.amount = amount;
-    }
-
-    /**
-     *
-     * @param date the value of date
-     * @param amount the value of amount
-     */
-    public Births(Date date, Integer amount) {
-        this.amount = amount;
-        this.date = date;
+        this.temperature = temperature;
     }
 
 }

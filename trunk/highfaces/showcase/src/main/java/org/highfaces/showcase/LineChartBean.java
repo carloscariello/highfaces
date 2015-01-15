@@ -15,14 +15,15 @@
  */
 package org.highfaces.showcase;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -31,32 +32,51 @@ import javax.faces.bean.RequestScoped;
 @ManagedBean
 @RequestScoped
 public class LineChartBean {
-
+    
     protected List<Integer> simpleList;
     protected List<Births> boys;
     protected List<Births> girls;
     protected Map<String, List<Births>> mappedList;
-
+    
+    protected String selectedPoint;
+    protected String selectedSeries;
+    
+    public String getSelectedPoint() {
+        return selectedPoint;
+    }
+    
+    public void setSelectedPoint(String selectedPoint) {
+        this.selectedPoint = selectedPoint;
+    }
+    
+    public String getSelectedSeries() {
+        return selectedSeries;
+    }
+    
+    public void setSelectedSeries(String selectedSeries) {
+        this.selectedSeries = selectedSeries;
+    }
+    
     public List<Integer> getSimpleList() {
         return simpleList;
     }
-
+    
     public List<Births> getBoys() {
         return boys;
     }
-
+    
     public List<Births> getGirls() {
         return girls;
     }
-
+    
     public Map<String, List<Births>> getMappedList() {
         return mappedList;
     }
-
+    
     public LineChartBean() {
         reload();
     }
-
+    
     public void reload() {
         simpleList = new ArrayList<>();
         boys = new ArrayList<>();
@@ -67,11 +87,15 @@ public class LineChartBean {
             simpleList.add(r.nextInt(500) + 800);
             boys.add(new Births(Integer.toString(i), r.nextInt(500) + 800));
             girls.add(new Births(Integer.toString(i), r.nextInt(500) + 800));
-
+            
         }
         mappedList.put("boys", boys);
         mappedList.put("girls", girls);
-
+        
     }
 
+    public void clicked() {
+        FacesMessage m = new FacesMessage("You clicked " + selectedPoint + " on series " + selectedSeries);
+        FacesContext.getCurrentInstance().addMessage("", m);        
+    }
 }
