@@ -25,14 +25,21 @@ limitations under the License.
 
                 template="/WEB-INF/master.xhtml"
                 >
-    <ui:define name="headline">ChartSerie - declare Series in xhtml</ui:define>
-    <ui:define name="description">With ChartSeries as children you can add any Java Object List to your Charts and define which attribute shall be used as point values. The Objects inside the lists can even be of different types.</ui:define>
+    <ui:define name="headline">ChartTooltip - tooltip customizing component</ui:define>
+    <ui:define name="description">Using facets of the ChartTooltip, display of tooltip's header, body and footer can be influenced.</ui:define>
     <ui:define name="icontent">
 
         <h:panelGroup layout="block">
             <hf:chart type="line" title="Series with individual lists" xaxisLabel="Year" yaxisLabel="Amount">
                 <hf:chartSerie name="Boys" value="#{lineChartBean.boys}" var="point" point="#{point.amount}" tickLabel="#{point.year}" />
                 <hf:chartSerie name="Girls" value="#{lineChartBean.girls}" var="point" point="#{point.amount}"  />
+                <hf:chartTooltip  backgroundColor="#000000" shared="true">
+                    <f:facet name="header">
+                        <h:outputText escape="false" value="&lt;table>&lt;tr>&lt;td style='color:white;font-weight:bold;padding-right:5px;'>{point.key}&lt;/td>&lt;td style='border-left:1px solid white;padding-left: 10px;'>"/>
+                    </f:facet>
+                    <f:facet name="body"><h:outputText value="&lt;span style='color:white'>{series.name}: &lt;b>{point.y}&lt;/b>&lt;/span>&lt;br/>"/></f:facet>
+                    <f:facet name="footer"><h:outputText escape="false" value='&lt;/td>&lt;/tr>&lt;/table>' /></f:facet>
+                </hf:chartTooltip>
             </hf:chart>
 
         </h:panelGroup>
@@ -40,10 +47,17 @@ limitations under the License.
     <ui:define name="xhtml">
         <script type="syntaxhighlighter" class="brush: xml"><![CDATA[
             
-               <hf:chart type="line" title="Series with individual lists" xaxisLabel="Year" yaxisLabel="Amount">
-                   <hf:chartSerie name="Boys" value="# {lineChartBean.boys}" var="point" point="# {point.amount}"  tickLabel="# {point.year}"/>
-                   <hf:chartSerie name="Girls" value="# {lineChartBean.girls}" var="point" point="# {point.amount}"  />
-               </hf:chart>
+            <hf:chart type="line" title="Series with individual lists" xaxisLabel="Year" yaxisLabel="Amount">
+                <hf:chartSerie name="Boys" value="# {lineChartBean.boys}" var="point" point="# {point.amount}" tickLabel="# {point.year}" />
+                <hf:chartSerie name="Girls" value="# {lineChartBean.girls}" var="point" point="# {point.amount}"  />
+                <hf:chartTooltip  backgroundColor="#000000" shared="true">
+                    <f:facet name="header">
+                        <h:outputText escape="false" value="&amp;lt;table>&amp;lt;tr>&amp;lt;td style='color:white;font-weight:bold;padding-right:5px;'>{point.key}&amp;lt;/td>&amp;lt;td style='border-left:1px solid white;padding-left: 10px;'>"/>
+                    </f:facet>
+                    <f:facet name="body"><h:outputText value="&amp;lt;span style='color:white'>{series.name}: &amp;lt;b>{point.y}&amp;lt;/b>&amp;lt;/span>&amp;lt;br/>"/></f:facet>
+                    <f:facet name="footer"><h:outputText escape="false" value='&amp;lt;/td>&amp;lt;/tr>&amp;lt;/table>' /></f:facet>
+                </hf:chartTooltip>
+            </hf:chart>
 
             ]]></script>
     </ui:define>

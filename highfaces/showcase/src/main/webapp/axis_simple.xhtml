@@ -19,29 +19,32 @@ limitations under the License.
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:f="http://java.sun.com/jsf/core"
-             
+
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:hf="http://highfaces.org"
 
                 template="/WEB-INF/master.xhtml"
                 >
-    <ui:define name="headline">Bar chart - List with POJOs</ui:define>
-    <ui:define name="description">A Map of lists of POJOs can be easily turned into a Chart by using the POJO's properties for point values, Tick Label, etc. Customization with the various possible facets or attributes can still be combined.</ui:define>
-    
+    <ui:define name="headline">ChartAxis - Enhanced customizing of axes</ui:define>
+    <ui:define name="description">If you want to do things with your axes apart from the default, you can define them via the ChartAxis component. </ui:define>
     <ui:define name="icontent">
-        
+
         <h:panelGroup layout="block">
-           
-            <hf:chart type="bar" value="#{lineChartBean.boys}" var="birth" point="#{birth.amount}" tickLabel="#{birth.year}" title="List of Pojos"/>
+            <hf:chart type="line" value="#{lineChartBean.boys}" var="birth" point="#{birth.amount}" tickLabel="#{birth.year}" title="List of Pojos" xaxisLabel="Years" >
+                <hf:chartAxis position="w" title="Amount of Births" type="linear" format="{value} p.a." gridLineColor="#FFFF00" style="font-weight: bold;"/>
+            </hf:chart>
+
         </h:panelGroup>
     </ui:define>
     <ui:define name="xhtml">
         <script type="syntaxhighlighter" class="brush: xml"><![CDATA[
             
-               <hf:chart type="bar" value="# {lineChartBean.boys}" var="birth" 
-                    point="# {birth.amount}" tickLabel="# {birth.year}" title="List of Pojos"/>
-
-            ]]></script>
+               <hf:chart type="line" value="# {lineChartBean.boys}" var="birth" xaxisLabel="Years"
+                    point="# {birth.amount}" tickLabel="# {birth.year}" title="List of Pojos">
+                    <hf:chartAxis position="w" title="Amount of Births" type="linear" format="{value} p.a." 
+                        gridLineColor="#FFFF00" style="font-weight: bold;"/>
+               </hf:chart>
+            ]]></script>>
     </ui:define>
     <ui:define name="java">        
         <script type="syntaxhighlighter" class="brush: java"><![CDATA[
@@ -69,41 +72,5 @@ public class LineChartBean {
     }
 }
         ]]></script>
-    </ui:define>
-    <ui:define name="additional">  
-        <p:tab title="Births.java">
-        <script type="syntaxhighlighter" class="brush: java"><![CDATA[
-
-public class Births {
-
-    protected String year;
-    protected Integer amount;
-
-    public String getYear() {
-        return year;
-    }
-
-    public void setYear(String year) {
-        this.year = year;
-    }
-
-    public Integer getAmount() {
-        return amount;
-    }
-
-    public void setAmount(Integer amount) {
-        this.amount = amount;
-    }
-
-    public Births() {
-    }
-
-    public Births(String year, Integer amount) {
-        this.year = year;
-        this.amount = amount;
-    }
-}
-        ]]></script>
-        </p:tab>
     </ui:define>
 </ui:composition>

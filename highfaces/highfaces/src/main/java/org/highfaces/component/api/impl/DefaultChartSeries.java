@@ -28,6 +28,13 @@ public class DefaultChartSeries implements Serializable, ChartSeries {
 
     private static final long serialVersionUID = -5508901726185744784L;
     protected String name;
+    protected String point;
+    protected String var;
+    protected String tickLabel;
+    protected String yaxis;
+    protected String type;
+    protected String dataLabel;
+    protected Boolean colorByPoint = false;
     protected List<DefaultDataPoint> data = new LinkedList<DefaultDataPoint>();
 
     @Override
@@ -43,6 +50,68 @@ public class DefaultChartSeries implements Serializable, ChartSeries {
     @Override
     public String getName() {
         return name;
+    }
+
+    @Override
+    public Object getPoint() {
+        return point;
+    }
+
+    @Override
+    public String getVar() {
+        return var;
+    }
+
+    @Override
+    public Object getValueExpression(String point) {
+        return null;
+    }
+
+    @Override
+    public Object getTickLabel() {
+        return tickLabel;
+    }
+
+    @Override
+    public Object getYaxis() {
+        return yaxis;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public Boolean getColorByPoint() {
+        return colorByPoint;
+    }
+
+    public String getDataLabel() {
+        return dataLabel;
+    }
+
+    @Override
+    public Object getValue() {
+        return data;
+    }
+
+    public List<DefaultDataPoint> getData() {
+        return data;
+    }
+
+    public void setYaxis(String yaxis) {
+        this.yaxis = yaxis;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public void setDataLabel(String dataLabel) {
+        this.dataLabel = dataLabel;
+    }
+
+    public void setColorByPoint(Boolean colorByPoint) {
+        this.colorByPoint = colorByPoint;
     }
 
 }

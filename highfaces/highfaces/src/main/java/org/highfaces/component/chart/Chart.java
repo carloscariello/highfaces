@@ -16,12 +16,16 @@
 package org.highfaces.component.chart;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.el.ELContext;
 import javax.el.ValueExpression;
 import javax.faces.component.FacesComponent;
 import javax.faces.component.UIOutput;
+import javax.faces.component.behavior.ClientBehaviorHolder;
 import javax.faces.context.FacesContext;
 
 /**
@@ -29,7 +33,7 @@ import javax.faces.context.FacesContext;
  * @author markus.bauer
  */
 @FacesComponent(value = "org.highfaces.component.Chart")
-public class Chart extends UIOutput {
+public class Chart extends UIOutput implements ClientBehaviorHolder{
 
     @Override
     public String getFamily() {
@@ -74,6 +78,14 @@ public class Chart extends UIOutput {
         return String.class.cast(this.getStateHelper().eval("rowIndexVar", null));
     }
 
+    public void seCredits(String value) {
+        this.getStateHelper().put("credits", value);
+    }
+
+    public String getCredits() {
+        return String.class.cast(this.getStateHelper().eval("credits", null));
+    }
+
     public void setRowIndexVar(String value) {
         this.getStateHelper().put("rowIndexVar", value);
     }
@@ -84,6 +96,38 @@ public class Chart extends UIOutput {
 
     public void setType(String value) {
         this.getStateHelper().put("type", value);
+    }
+
+    public String getSelectedSeries() {
+        return String.class.cast(this.getStateHelper().eval("selectedSeries", null));
+    }
+
+    public void setSelectedSeries(String value) {
+        this.getStateHelper().put("selectedSeries", value);
+         ValueExpression f = getValueExpression("selectedSeries");
+
+        if (f != null) {
+
+            ELContext elContext = this.getFacesContext().getELContext();
+
+            f.setValue(elContext, value);
+        }
+    }
+
+    public String getSelectedPoint() {
+        return String.class.cast(this.getStateHelper().eval("selectedPoint", null));
+    }
+
+    public void setSelectedPoint(String value) {
+        this.getStateHelper().put("selectedPoint", value);
+         ValueExpression f = getValueExpression("selectedPoint");
+
+        if (f != null) {
+
+            ELContext elContext = this.getFacesContext().getELContext();
+
+            f.setValue(elContext, value);
+        }
     }
 
     public String getXaxisLabel() {
@@ -127,6 +171,16 @@ public class Chart extends UIOutput {
 
     public void setSubTitle(String value) {
         this.getStateHelper().put("subTitle", value);
+    }
+
+    public String getColors() {
+        String result = String.class.cast(this.getStateHelper().eval("colors", null));
+
+        return result;
+    }
+
+    public void setColors(String value) {
+        this.getStateHelper().put("colors", value);
     }
 
     public String getHeight() {
@@ -208,5 +262,30 @@ public class Chart extends UIOutput {
     public void setTickLabel(Object value) {
         this.getStateHelper().put("tickLabel", value);
     }
+
+    public String getStacking() {
+        return String.class.cast(this.getStateHelper().eval("stacking", null));
+    }
+
+    public void setStacking(String value) {
+        this.getStateHelper().put("stacking", value);
+    }
     private static final Logger LOG = Logger.getLogger(Chart.class.getName());
+
+    private static final Collection<String> EVENT_NAMES = Collections
+            .unmodifiableCollection(Arrays.asList("select"));
+
+    @Override
+    public Collection<String> getEventNames() {
+        return EVENT_NAMES;
+    }
+
+    @Override
+    public String getDefaultEventName() {
+        return "select";
+    }
+    
+    public void select(String series, String point) {
+        
+    }
 }

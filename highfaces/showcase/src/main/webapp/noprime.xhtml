@@ -20,7 +20,7 @@ limitations under the License.
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core" 
 
-      xmlns:hc="http://highfaces.org">
+      xmlns:hf="http://highfaces.org">
 
     <h:head>
 
@@ -50,9 +50,9 @@ limitations under the License.
                 </div>
                 <div class="smain">
                     <h:panelGroup layout="block">
-                        <hc:chart type="line" value="#{lineChartBean.simpleList}" var="point" point="#{point}" title="List of Integer values" xaxisLabel="Index" yaxisLabel="Amount">
+                        <hf:chart type="line" value="#{lineChartBean.simpleList}" var="point" point="#{point}" title="List of Integer values" xaxisLabel="Index" yaxisLabel="Amount">
 
-                        </hc:chart>
+                        </hf:chart>
 
                     </h:panelGroup>
                 </div>

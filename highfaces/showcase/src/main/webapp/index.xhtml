@@ -20,7 +20,7 @@ limitations under the License.
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core" 
       xmlns:p="http://primefaces.org/ui"
-      xmlns:hc="http://highfaces.org">
+      xmlns:hf="http://highfaces.org">
 
     <h:head>
 
@@ -63,13 +63,32 @@ limitations under the License.
                             </p:submenu>
                             <p:submenu label="Column Chart">
                                 <p:menuitem value="Simple List" outcome="column_simple" icon="ui-icon-signal" />
+                                <p:menuitem value="Stacked Columns" outcome="column_stacked" icon="ui-icon-signal" />
+                                <p:menuitem value="Selection" outcome="selection_column" icon="ui-icon-signal" />
                             </p:submenu>
-                            <p:submenu label="Chart Customizing">
-                                <p:menuitem value="Axes" outcome="column_simple" icon="ui-icon-signal" />
-                                <p:menuitem value="Tooltip" outcome="column_simple" icon="ui-icon-signal" />
-                                <p:menuitem value="Legend" outcome="column_simple" icon="ui-icon-signal" />
-                            </p:submenu>
+                            <p:submenu label="Pie Chart">
+                                <p:menuitem value="Pie Chart" outcome="pie" icon="ui-icon-signal" />  
+                                <p:menuitem value="Customized Labels" outcome="pie_datalabel" icon="ui-icon-signal" />
+                            </p:submenu>   
+                            <p:separator />
                             <p:submenu label="ChartSerie">
+                                <p:menuitem value="Simple List" outcome="series_simple" icon="ui-icon-signal" />
+                                <p:menuitem value="Combining different types" outcome="series_combined" icon="ui-icon-signal" />
+                            </p:submenu>
+                            <p:submenu label="ChartAxis">
+                                <p:menuitem value="Simple Axis" outcome="axis_simple" icon="ui-icon-signal" />
+                                <p:menuitem value="Multiple Axes" outcome="axis_multi" icon="ui-icon-signal" />
+                                <p:menuitem value="Date Axes" outcome="axis_date" icon="ui-icon-signal" />
+                            </p:submenu>
+                            <p:submenu label="ChartLegend">
+                                <p:menuitem value="Simple Legend" outcome="legend_simple" icon="ui-icon-signal" />
+                            </p:submenu>
+                            <p:submenu label="ChartTooltip">
+                                <p:menuitem value="Simple Tooltip" outcome="tooltip_simple" icon="ui-icon-signal" />
+                                <p:menuitem value="Advanced Tooltip" outcome="tooltip_advanced" icon="ui-icon-signal" />
+                            </p:submenu>
+                            <p:submenu label="ChartModel API">
+                                <p:menuitem value="Defining Series in Code" outcome="chartmodel" icon="ui-icon-signal" />
                             </p:submenu>
                         </p:panelMenu>
                     </div>
@@ -79,8 +98,8 @@ limitations under the License.
                             <h3><ui:insert name="description">The demo application demonstrates you various showcases for the HighFaces components.</ui:insert></h3>
                         </div>
                         <p:outputPanel layout="block" >
-                            The showcase runs on a very basic setup, using Tomcat 6, JSF 2.1 and Java 6. The additional components are from PrimeFaces 5.1.<br /><br/>
-                            Please use the left side menu to navigate to the component and use case of your interest.<br/>
+                            The showcase runs on a very basic setup, using Tomcat 6, JSF 2.1 and Java 7. The additional components are from PrimeFaces 5.1.<br /><br/>
+                            Please use the left side menu to navigate to the component and use case of your interest. Besides the main feature, every showcase from the left side demonstrates an additional feature which is common to all other use cases as well.<br/>
                             <br/><br/>
                             Full source code of the showcase can be found next to HighFaces source code on code.google.com and is also under Apache 2.0 License.<br/>
                         </p:outputPanel>

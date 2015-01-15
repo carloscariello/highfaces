@@ -15,6 +15,8 @@
  */
 package org.highfaces.component.api;
 
+import java.util.Collection;
+
 /**
  *
  * @author Markus
@@ -22,8 +24,27 @@ package org.highfaces.component.api;
 public interface ChartSeries {
 
     void addPoint(Object where, Number value);
-    
+
     void setName(String name);
-    
+
     String getName();
+
+    Object getPoint();
+
+    String getVar();
+
+    String getType();
+
+    public Object getValueExpression(String point);
+
+    Object getTickLabel();
+
+    Object getYaxis();
+    
+    Boolean getColorByPoint();
+    
+    public String getDataLabel();
+
+    public Object getValue();
+
 }

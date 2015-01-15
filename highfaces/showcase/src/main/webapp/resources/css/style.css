@@ -28,7 +28,7 @@ html, body, form {
     height: calc(100% - 100px);
     margin:0px;
     padding:0px;
-    
+
 }
 .sleft {
     margin:0px;
@@ -155,4 +155,22 @@ h3 {
 .footer {
     color: #333333;
     font: 14px "Trebuchet MS", "Times New Roman", Times, serif;
+}
+.ui-panelmenu .ui-panelmenu-header {
+    padding-top:5px;
+}
+.ui-panelmenu .ui-menuitem {
+    padding-top:3px;
+    padding-bottom:2px;
+}
+.ui-tabs {
+    border:0px !important;
+}
+.ui-tabs-nav {
+    background: transparent !important;
+    border-bottom: 1px solid silver !important;
+}
+.sbottom a {
+    text-decoration: none;
+    color:white;
 }
