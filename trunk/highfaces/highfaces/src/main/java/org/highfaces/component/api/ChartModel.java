@@ -18,11 +18,15 @@ package org.highfaces.component.api;
 import java.util.List;
 
 /**
- *
+ * This interface is the entry point for the ChartModel API. It is the holder for all Series that shall be delivered by this model.
  * @author Markus
+ * @since 1.0
  */
-public interface ChartModel {
+public interface ChartModel { 
 
-    List<ChartSeries> getSeries();
+    /*
+    * This returns all known ChartSeries contained by this model.
+    */
+    public List<ChartSeries> getSeries();
     
 }
