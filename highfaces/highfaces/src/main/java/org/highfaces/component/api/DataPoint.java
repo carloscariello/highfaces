@@ -16,13 +16,23 @@
 package org.highfaces.component.api;
 
 /**
+ * This interface represents a single Point inside a Chart series, especially
+ * the value (y axis) and name (x-axis)
  *
  * @author Markus
+ * @since 1.0
+ *
  */
 public interface DataPoint {
 
+    /* This is the tick on the x axis for this point. If you have a Date-axis, this returns the Date object, else it should return a string to be displayed on the axis
+    
+     */
     Object getName();
 
-    Number getValue();
+    /* This is the tick on the y axis for this point. If you have a column char, remember that x and y axis are simply flipped, so here it would be the tick on the x axis.
     
+     */
+    Number getValue();
+
 }
