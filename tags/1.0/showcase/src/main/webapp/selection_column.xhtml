@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright 2014 Bauer-Live Softwaredevelopment.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:hf="http://highfaces.org"
+
+                template="/WEB-INF/master.xhtml"
+                >
+    <ui:define name="headline">Column chart - Selectable ChartSeries Columns</ui:define>
+    <ui:define name="description">A chart can easily be made interactive by providing ValueExpressions where to store the selected values. You can even attach f:ajax or p:ajax and directly react in the backend via ajax.</ui:define>
+
+    <ui:define name="icontent">
+        <p:growl autoUpdate="true" />
+        <h:panelGroup layout="block">
+            <hf:chart type="column" title="Series with POJO Lists" selectedSeries="#{lineChartBean.selectedSeries}" selectedPoint="#{lineChartBean.selectedPoint}">
+                <p:ajax event="select" listener="#{lineChartBean.clicked}" />
+                <hf:chartSerie name="Boys" value="#{lineChartBean.boys}" var="point" point="#{point.amount}" tickLabel="#{point.year}" />
+                <hf:chartSerie name="Girls" value="#{lineChartBean.girls}" var="point" point="#{point.amount}"  />
+            </hf:chart>
+
+        </h:panelGroup>
+    </ui:define>
+    <ui:define name="xhtml">
+        <script type="syntaxhighlighter" class="brush: xml"><![CDATA[
+            <p:growl autoUpdate="true" />
+            <hf:chart type="column" title="Series with POJO Lists" selectedSeries="# {lineChartBean.selectedSeries}" selectedPoint="# {lineChartBean.selectedPoint}">
+                <p:ajax event="select" listener="# {lineChartBean.clicked}" />
+                <hf:chartSerie name="Boys" value="# {lineChartBean.boys}" var="point" point="# {point.amount}" tickLabel="# {point.year}" />
+                <hf:chartSerie name="Girls" value="# {lineChartBean.girls}" var="point" point="# {point.amount}"  />
+            </hf:chart>
+
+            ]]></script>
+    </ui:define>
+    <ui:define name="java">        
+        <script type="syntaxhighlighter" class="brush: java"><![CDATA[
+@ManagedBean
+@RequestScoped
+public class LineChartBean {
+
+    protected List<Birth> boys;
+    protected List<Birth> girls;
+    protected String selectedPoint;
+    protected String selectedSeries;
+    
+    // getters and setters omitted   
+    
+    public LineChartBean() {
+        reload();
+    }
+
+    private void reload() {
+        boys = new ArrayList<>();
+        girls = new ArrayList<>();
+        Random r = new Random();
+        for (int i = 2000; i < 2010; i++) {
+            boys.add(new Births(Integer.toString(i), r.nextInt(500) + 800));   
+            girls.add(new Births(Integer.toString(i), r.nextInt(500) + 800));   
+        }  
+    }
+    
+    public void clicked() {
+        FacesMessage m = new FacesMessage("You clicked " + selectedPoint + " on series " + selectedSeries);
+        FacesContext.getCurrentInstance().addMessage("", m);        
+    }
+}
+        ]]></script>
+    </ui:define>
+    <ui:define name="additional">  
+        <p:tab title="Births.java">
+        <script type="syntaxhighlighter" class="brush: java"><![CDATA[
+
+public class Births {
+
+    protected String year;
+    protected Integer amount;
+
+    public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
+    }
+
+    public Integer getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Integer amount) {
+        this.amount = amount;
+    }
+
+    public Births() {
+    }
+
+    public Births(String year, Integer amount) {
+        this.year = year;
+        this.amount = amount;
+    }
+}
+        ]]></script>
+        </p:tab>
+    </ui:define>
+</ui:composition>

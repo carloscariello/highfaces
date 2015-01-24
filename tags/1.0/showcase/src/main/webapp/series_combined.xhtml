@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright 2014 Bauer-Live Softwaredevelopment.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:hf="http://highfaces.org"
+
+                template="/WEB-INF/master.xhtml"
+                >
+    <ui:define name="headline">ChartSerie - declare Series in xhtml</ui:define>
+    <ui:define name="description">With ChartSeries as children you can add any Java Object List to your Charts and define which attribute shall be used as point values. The Objects inside the lists can even be of different types.</ui:define>
+    <ui:define name="icontent">
+
+        <h:panelGroup layout="block">
+            <hf:chart type="line" title="Combining different chart types with ChartSeries" xaxisLabel="Year" yaxisLabel="Amount">
+                <hf:chartSerie name="Boys" value="#{lineChartBean.boys}" var="point" point="#{point.amount}" tickLabel="#{point.year}" />
+                <hf:chartSerie colorByPoint="true" type="column" name="Girls" value="#{lineChartBean.girls}" var="point" point="#{point.amount}"  />
+            </hf:chart>
+
+        </h:panelGroup>
+    </ui:define>
+    <ui:define name="xhtml">
+        <script type="syntaxhighlighter" class="brush: xml"><![CDATA[
+            
+               <hf:chart type="line" title="Series with individual lists" xaxisLabel="Year" yaxisLabel="Amount">
+                   <hf:chartSerie name="Boys" value="# {lineChartBean.boys}" var="point" point="# {point.amount}"  tickLabel="# {point.year}"/>
+                   <hf:chartSerie colorByPoint="true" type="column" name="Girls" value="# {lineChartBean.girls}" var="point" point="# {point.amount}"  />
+               </hf:chart>
+
+            ]]></script>
+    </ui:define>
+    <ui:define name="java">        
+        <script type="syntaxhighlighter" class="brush: java"><![CDATA[
+@ManagedBean
+@RequestScoped
+public class LineChartBean {
+
+    protected List<Birth> boys;
+    protected List<Birth> girls;
+    
+    public List<Births> getBoys() {
+        return boys;
+    }           
+    
+    public List<Births> getGirls() {
+        return girls;
+    }   
+    
+    public LineChartBean() {
+        reload();
+    }
+
+    private void reload() {
+        boys = new ArrayList<>();
+        girls = new ArrayList<>();
+        Random r = new Random();
+        for (int i = 2000; i < 2010; i++) {
+            boys.add(new Births(Integer.toString(i), r.nextInt(500) + 800));   
+            girls.add(new Births(Integer.toString(i), r.nextInt(500) + 800));   
+        }  
+    }
+}
+        ]]></script>
+    </ui:define>
+    <ui:define name="additional">  
+        <p:tab title="Births.java">
+        <script type="syntaxhighlighter" class="brush: java"><![CDATA[
+
+public class Births {
+
+    protected String year;
+    protected Integer amount;
+
+    public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
+    }
+
+    public Integer getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Integer amount) {
+        this.amount = amount;
+    }
+
+    public Births() {
+    }
+
+    public Births(String year, Integer amount) {
+        this.year = year;
+        this.amount = amount;
+    }
+}
+        ]]></script>
+        </p:tab>
+    </ui:define>
+</ui:composition>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright 2014 Bauer-Live Softwaredevelopment.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+             
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:hf="http://highfaces.org"
+
+                template="/WEB-INF/master.xhtml"
+                >
+    <ui:define name="headline">Column chart - Stacked Map of POJOs</ui:define>
+    <ui:define name="description">With the attribute "stacking" you can put series on top of each other. If you set stacking to "percent", each stack will be aligned to 100%, if set to "normal" the values will be summed up.</ui:define>
+    
+    <ui:define name="icontent">
+        
+        <h:panelGroup layout="block">
+           
+            <hf:chart type="column" value="#{lineChartBean.mappedList}" var="birth" stacking="normal" point="#{birth.amount}" tickLabel="#{birth.year}" title="Stacked Map of Lists"/>
+        </h:panelGroup>
+    </ui:define>
+    <ui:define name="xhtml">
+        <script type="syntaxhighlighter" class="brush: xml"><![CDATA[
+            
+               <hf:chart type="column" value="# {lineChartBean.boys}" var="birth" stacking="normal"
+                    point="# {birth.amount}" tickLabel="# {birth.year}" title="List of Pojos"/>
+
+            ]]></script>
+    </ui:define>
+    <ui:define name="java">        
+        <script type="syntaxhighlighter" class="brush: java"><![CDATA[
+@ManagedBean
+@RequestScoped
+public class LineChartBean {
+
+    protected Map<String, List<Births>> mappedList;
+    
+    public Map<String, List<Births>> getMappedList() {
+        return mappedList;
+    }          
+    
+    public LineChartBean() {
+        reload();
+    }
+
+    private void reload() {
+        boys = new ArrayList<>();
+        girls = new ArrayList<>();
+        mappedList = new HashMap<>();
+        Random r = new Random();
+        for (int i = 2000; i < 2010; i++) {
+            boys.add(new Births(Integer.toString(i), r.nextInt(500) + 800));
+            girls.add(new Births(Integer.toString(i), r.nextInt(500) + 800));
+        }
+        mappedList.put("boys", boys);
+        mappedList.put("girls", girls);
+    }
+}
+        ]]></script>
+    </ui:define>
+    <ui:define name="additional">  
+        <p:tab title="Births.java">
+        <script type="syntaxhighlighter" class="brush: java"><![CDATA[
+
+public class Births {
+
+    protected String year;
+    protected Integer amount;
+
+    public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
+    }
+
+    public Integer getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Integer amount) {
+        this.amount = amount;
+    }
+
+    public Births() {
+    }
+
+    public Births(String year, Integer amount) {
+        this.year = year;
+        this.amount = amount;
+    }
+}
+        ]]></script>
+        </p:tab>
+    </ui:define>
+</ui:composition>

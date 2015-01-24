@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<facelet-taglib xmlns="http://java.sun.com/xml/ns/javaee"
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facelettaglibrary_2_0.xsd"
+                version="2.0">
+    <namespace>http://highfaces.org</namespace>
+    <tag>
+        <tag-name>chart</tag-name>
+        <component>
+            <component-type>org.highfaces.component.Chart</component-type>
+            <renderer-type>org.highfaces.component.ChartRenderer</renderer-type>
+        </component>
+        <attribute>
+            <description><![CDATA[Type of the charts, possible values are line, area, column, bar and pie]]></description>
+            <name>type</name>
+            <required>true</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[List of HTML colors for the chart series. Defaults to "#2f7ed8,#0d233a,#8bbc21,#910000,#1aadce,#492970,#f28f43,#77a1e5,#c42525,#a6c96a".]]></description>
+            <name>colors</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[Datasource of the component, can be a Collection or Map type. Provide either a value, a model or chartseries as children declared in the xhtml file.]]></description>
+            <name>value</name>
+            <required>false</required>
+            <type>java.lang.Object</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[Datasource of the component, must implement the ChartModel interface. Provide either a value, a model or chartseries as children declared in the xhtml file.]]></description>
+            <name>model</name>
+            <required>false</required>
+            <type>java.lang.Object</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[ValueExpression of the currently selected Series.]]></description>
+            <name>selectedSeries</name>
+            <required>false</required>
+            <type>java.lang.Object</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[ValueExpression of the currently selected Point inside the selected Series. This corresponds to the category/value of the x axis.]]></description>
+            <name>selectedPoint</name>
+            <required>false</required>
+            <type>java.lang.Object</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[JavaScript to be executed on point selection.]]></description>
+            <name>onselect</name>
+            <required>false</required>
+            <type>java.lang.Object</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[Height of chart in px]]></description>
+            <name>height</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[Width of chart in px]]></description>
+            <name>width</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[Title for the chart]]></description>
+            <name>title</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[Credits text for the chart]]></description>
+            <name>credits</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[Sub Title for the chart]]></description>
+            <name>subTitle</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[Label for x-axis]]></description>
+            <name>xaxisLabel</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[Label for y-axis]]></description>
+            <name>yaxisLabel</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[Name of the request scoped variable used as iterator for value]]></description>
+            <name>var</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[Index of currently rendered item during iteration over the Collection in value-Attribute]]></description>
+            <name>rowIndexVar</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[ValueExpression of the value of a point, bar,... Only valid if used in combinatino with value.]]></description>
+            <name>point</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[ValueExpression of the tickLabel for a single point. Only valid if used in combinatino with value.]]></description>
+            <name>tickLabel</name>
+            <required>false</required>
+            <type>java.lang.Object</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[ID of rerender component for ajax actions]]></description>
+            <name>render</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[JavaScript function name for client side customization. All highcharts configuration options are available inside the function using 'this'.]]></description>
+            <name>extender</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[Whether to stack the values of each series on top of each other. Possible values are 'none', 'normal' or 'percent', defaulting to 'none'.]]></description>
+            <name>stacking</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+    </tag>
+    <tag>
+        <tag-name>chartSerie</tag-name>
+        <component>
+            <component-type>org.highfaces.component.ChartSerie</component-type>
+            <!--<renderer-type>org.highfaces.component.ChartRenderer</renderer-type>-->
+        </component>
+        <attribute>
+            <description><![CDATA[Type of the charts, possible values are line, area, column and bar]]></description>
+            <name>name</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[Datasource of the component, can be a Collection or Map type. Provide either a value, a model or chartseries as children declared in the xhtml file.]]></description>
+            <name>value</name>
+            <required>false</required>
+            <type>java.lang.Object</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[Name of the request scoped variable used as iterator for value]]></description>
+            <name>var</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[Type of this series. If not provided, it defaults to the chart's type.]]></description>
+            <name>type</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[ValueExpression of the value of a point, bar,... Only valid if used in combination with value.]]></description>
+            <name>point</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[ValueExpression of the tickLabel for a single point. Only valid if used in combination with value.]]></description>
+            <name>tickLabel</name>
+            <required>false</required>
+            <type>java.lang.Object</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[How the data Label shall be displayed. If not provided, the corresponding x axis entry or name of the point is used.]]></description>
+            <name>dataLabel</name>
+            <required>false</required>
+            <type>java.lang.Object</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[ID of the ChartAxis if not the primary should be used for this series.]]></description>
+            <name>yaxis</name>
+            <required>false</required>
+            <type>java.lang.Object</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[Change the color for each point instead of having the same color for the whole series. Defaults to false.]]></description>
+            <name>colorByPoint</name>
+            <required>false</required>
+            <type>java.lang.Boolean</type>
+        </attribute>
+    </tag>
+    <tag>
+        <tag-name>chartAxis</tag-name>
+        <component>
+            <component-type>org.highfaces.component.ChartAxis</component-type>
+            <!--<renderer-type>org.highfaces.component.ChartRenderer</renderer-type>-->
+        </component>
+        <attribute>
+            <description><![CDATA[Position of this axis. Possible values are n, w, s or e.]]></description>
+            <name>position</name>
+            <required>true</required>
+            <type>java.lang.Object</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[Angle in degrees if the tickLabel should be rotated. Defaults to 0.]]></description>
+            <name>tickAngle</name>
+            <required>false</required>
+            <type>java.lang.Object</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[Color of the gridline for this axis within the chart.]]></description>
+            <name>gridLineColor</name>
+            <required>false</required>
+            <type>java.lang.Object</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[Width of the gridline for this axis within the chart. Use 0 to not display a gridline.]]></description>
+            <name>gridLineWidth</name>
+            <required>false</required>
+            <type>java.lang.Object</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[Type of this axis. Possible values are linear, category and datetime, defaulting to linear.]]></description>
+            <name>type</name>
+            <required>false</required>
+            <type>java.lang.Object</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[Label-Style of this axis. Use CSS definition style to e.g. define a color.]]></description>
+            <name>style</name>
+            <required>false</required>
+            <type>java.lang.Object</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[Title of this axis.]]></description>
+            <name>title</name>
+            <required>false</required>
+            <type>java.lang.Object</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[Label-Format of this axis. To display e.g. mm use "{value} mm"]]></description>
+            <name>format</name>
+            <required>false</required>
+            <type>java.lang.Object</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[Minimum value for this axis]]></description>
+            <name>min</name>
+            <required>false</required>
+            <type>java.lang.Object</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[Maximum value for this axis]]></description>
+            <name>max</name>
+            <required>false</required>
+            <type>java.lang.Object</type>
+        </attribute>
+    </tag>
+    <tag>
+        <tag-name>chartLegend</tag-name>
+        <component>
+            <component-type>org.highfaces.component.ChartLegend</component-type>
+            <!--<renderer-type>org.highfaces.component.ChartRenderer</renderer-type>-->
+        </component>
+        <attribute>
+            <description><![CDATA[Position of the legend. Possible values are n, w, s, e and combinations like ne, nw, se, sw]]></description>
+            <name>position</name>
+            <required>true</required>
+            <type>java.lang.Object</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[Title for the legend.]]></description>
+            <name>title</name>
+            <required>false</required>
+            <type>java.lang.Object</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[CSS styles for the legend.]]></description>
+            <name>style</name>
+            <required>false</required>
+            <type>java.lang.Object</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[Layout for the legend, possible values are vertical and the default horizontal.]]></description>
+            <name>layout</name>
+            <required>false</required>
+            <type>java.lang.Object</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[HTML Background color for the legend]]></description>
+            <name>backgroundColor</name>
+            <required>false</required>
+            <type>java.lang.Object</type>
+        </attribute>
+    </tag>
+    <tag>
+        <tag-name>chartTooltip</tag-name>
+        <component>
+            <component-type>org.highfaces.component.ChartTooltip</component-type>
+            <!--<renderer-type>org.highfaces.component.ChartRenderer</renderer-type>-->
+        </component>
+       
+        <attribute>
+            <description><![CDATA[CSS styles for the legend.]]></description>
+            <name>style</name>
+            <required>false</required>
+            <type>java.lang.Object</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[Share one tooltip across all series. If true, the values for each tick will be shown instead of only the hovered point.]]></description>
+            <name>shared</name>
+            <required>false</required>
+            <type>java.lang.Boolean</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[HTML Background color for the legend]]></description>
+            <name>backgroundColor</name>
+            <required>false</required>
+            <type>java.lang.Object</type>
+        </attribute>
+    </tag>
+</facelet-taglib>
