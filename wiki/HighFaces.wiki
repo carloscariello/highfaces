@@ -21,3 +21,11 @@ To use highfaces in your project, simply add the following dependency:
     <version>1.0</version>
 </dependency>
 }}}
+
+= Usage in your xhtml pages =
+
+For being able to use the highfaces components, you need to add the following namespace to your top level tag:
+
+{{{
+    xmlns:hf="http://highfaces.org"
+}}}
