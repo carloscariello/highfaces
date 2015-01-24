@@ -5,6 +5,19 @@
 HighFaces is a JSF 2 component library wrapping the famous JS library highcharts and providing easiest possible and stable access to its API from JSF.
 
 
+
 = Details =
 
 To see HighFaces in Action, visit the showcase application at http://www.highfaces.org
+
+= Maven Usage =
+
+To use highfaces in your project, simply add the following dependency:
+
+{{{
+<dependency>
+    <groupId>org.highfaces</groupId>
+    <artifactId>highfaces</artifactId>
+    <version>1.0</version>
+</dependency>
+}}}
