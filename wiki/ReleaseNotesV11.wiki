@@ -1,0 +1,25 @@
+#summary Release Notes for Version 1.1
+#labels Featured,Phase-Implementation
+
+= Introduction =
+
+Find below all changes, fixes and new features for Version 1.1 compared to the last version
+
+
+= Details =
+
+*Changes*
+
+  * Upgraded HighCharts.js to latest version
+  * Improved support for extender, also added to showcase
+
+*Fixes*
+
+  * Fixed issue for resource handling when no PrimeFaces was present
+  * Fixed issue in resource handling, when several Charts were on the same page
+
+*Features*
+
+  * Added support for HeatMap
+  * Added support for TreeMap both single level and multi level
+  * Added TreeMapLevel component for individually defining TreeMap levels
